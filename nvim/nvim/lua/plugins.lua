@@ -72,10 +72,6 @@ packer.startup(function ()
   }
   -- ================================================================================
 
-  -- FILESYSTEM
-  use{'francoiscabrol/ranger.vim', requires = {'rbgrouleff/bclose.vim'}}
-  -- ================================================================================
-
   -- LANGUAGE SUPPORT
   -- elixir
   use 'elixir-editors/vim-elixir'
