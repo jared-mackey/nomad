@@ -4,30 +4,30 @@
 name = Jared Mackey
 
 [alias]
-	workprofile = !git config user.email \"jrmadm@divvypay.com\"  && git config user.signingkey CCF3E715CED89BFA
-	homeprofile = !git config user.email \"jared@mackey.tech\"  && git config user.signingkey 0C5ED94391419E3E
+  workprofile = !git config user.email \"jrmadm@divvypay.com\"  && git config user.signingkey CCF3E715CED89BFA
+  homeprofile = !git config user.email \"jared@mackey.tech\"  && git config user.signingkey 0C5ED94391419E3E
   cleanup = !"git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
-	up = pull
-	undo = reset HEAD~1 --mixed
-	ignore = update-index --assume-unchanged
-	unignore = update-index --no-assume-unchanged
+  up = pull
+  undo = reset HEAD~1 --mixed
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep "^[[:lower:]]"
   yeet = push --force-with-lease
   anew = push -u origin HEAD
 
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = gpg2
+  program = gpg2
 [rerere]
-	enabled = true
-	autoupdate = true
+  enabled = true
+  autoupdate = true
 [fetch]
-	prune = true
+  prune = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
   required = true
 [pull]
   rebase = true
@@ -35,10 +35,10 @@ name = Jared Mackey
 [rebase]
   autostash = true
 [core]
-	excludesfile = /home/jared/.config/git/gitignore
+  excludesfile = /home/jared/.config/git/gitignore
   editor = nvim
 [push]
   pushOption = merge_request.label=impact::low
   pushOption = merge_request.create
 [init]
-	defaultBranch = main
+  defaultBranch = main
