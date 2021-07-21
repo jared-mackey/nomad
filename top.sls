@@ -6,5 +6,5 @@ base:
     - git
     - kitty
     - nvim
-    - cli-utils
+    - zsh
 

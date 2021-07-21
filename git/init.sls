@@ -9,3 +9,4 @@ gitignore:
   file.managed:
     - name: /home/jared/.config/git/gitignore
     - source: salt://git/gitignore
+    - user: jared
