@@ -4,6 +4,7 @@ include:
 flameshot:
   pkg.installed
 
+# Cargo installed
 ripgrep:
   cmd.run:
     - name: cargo install ripgrep
@@ -12,7 +13,6 @@ ripgrep:
     - require:
         - rust
 
-# LS replacement
 exa:
   cmd.run:
     - name: cargo install exa
@@ -24,7 +24,39 @@ exa:
 zoxide:
   cmd.run:
     - name: cargo install zoxide
-    - unless: which z
+    - unless: which zoxide
+    - runas: jared
+    - require:
+      - rust
+
+xsv:
+  cmd.run:
+    - name: cargo install xsv
+    - unless: which xsv
+    - runas: jared
+    - require:
+      - rust
+
+btm:
+  cmd.run:
+    - name: cargo install bottom
+    - unless: which btm
+    - runas: jared
+    - require:
+      - rust
+
+bat:
+  cmd.run:
+    - name: cargo install bat
+    - unless: which bat
+    - runas: jared
+    - require:
+      - rust
+
+fd:
+  cmd.run:
+    - name: cargo install fd-find
+    - unless: which fd
     - runas: jared
     - require:
       - rust
@@ -42,6 +74,9 @@ direnv:
 
 # Kubens/Kubectx
 kubectx:
+  pkg.installed
+
+kubectl:
   pkg.installed
 
 op:
