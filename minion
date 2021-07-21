@@ -1,0 +1,13 @@
+file_roots:
+  base:
+    - /home/jared/nomad
+
+file_client: local
+
+providers:
+  service: systemd
+  pkg: pacmanpkg
+  user: useradd
+  group: groupadd
+
+    
