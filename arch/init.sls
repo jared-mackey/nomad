@@ -1,3 +1,6 @@
+include:
+  - crons
+
 reflector:
   pkg.installed:
     - name: reflector
@@ -17,3 +20,12 @@ reflector-running:
       - pkg: reflector
     - watch:
       - file: reflector-config
+
+pacman-download-updates:
+  cron.present:
+    - user: root
+    - identifier: "download pacman updates without applying"
+    - name: pacman -Syuw --noconfirm
+    # every two hours
+    - minute: 0
+    - hour: "*/2"

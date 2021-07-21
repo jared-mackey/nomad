@@ -1,6 +1,6 @@
 base:
   "*":
-    - arch.reflector
+    - arch
     # TODO: fix this 
     # - asdf
     - git
