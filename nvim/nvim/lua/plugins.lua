@@ -77,6 +77,8 @@ packer.startup(function ()
   use 'elixir-editors/vim-elixir'
   -- rust
   use 'simrat39/rust-tools.nvim'
+  -- salt
+  use 'saltstack/salt-vim'
   -- ================================================================================
 
   -- THEME
