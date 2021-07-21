@@ -1,5 +1,6 @@
 base:
   "*":
+    - git
     - kitty
     - nvim
 
