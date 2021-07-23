@@ -24,6 +24,12 @@ nvim_lsp.elixirls.setup{
   }
 }
 
+nvim_lsp.sqlls.setup{
+  cmd = {
+    "sql-language-server", "up", "--method", "stdio"
+  }
+}
+
 -- Setup treesitter
 -- require'nvim-treesitter.configs'.setup {
 --   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
