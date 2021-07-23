@@ -1,0 +1,99 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+
+################################################################################
+# TERMINAL
+################################################################################
+export GPG_TTY=$(tty)
+export EDITOR="nvim"
+
+################################################################################
+# K8s
+################################################################################
+alias kctx="kubectx"
+alias kns="kubens"
+alias k="kubectl"
+alias kgp="kubectl get pods"
+alias consul-forward="kubectl port-forward -n kv consul-server-0 8500:8500 &; sleep 2; open http://localhost:8500; fg"
+
+################################################################################
+# Elixir
+################################################################################
+# Enables history in IEx
+export ERL_AFLAGS="-kernel shell_history enabled"
+# For compiling erlang
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+# Enable erlang docs for IEx help function
+export KERL_BUILD_DOCS="yes"
+
+alias credo="mix credo --strict; mix credo -C tests --strict"
+
+export ELIXIR_LS_DIR="$HOME/dev/private/elixir-ls"
+function set_elixir_ls {
+  name=$(basename "$PWD")
+  expected="$ELIXIR_LS_DIR/$name"
+  if [ ! -d $expected ]; then
+    cp .tool-versions "$ELIXIR_LS_DIR"
+    pushd "$ELIXIR_LS_DIR"
+    rm -rf _build/
+    MIX_ENV=prod mix do clean, deps.get, compile, elixir_ls.release -o $name/
+    popd
+  fi
+}
+
+################################################################################
+# NOMAD
+################################################################################
+alias nomad='sudo salt-call state.apply'
+
+################################################################################
+# RUST
+################################################################################
+PATH=${PATH}:~/.cargo/bin
+
+################################################################################
+# ASDF
+################################################################################
+. /opt/asdf-vm/asdf.sh
+
+################################################################################
+# P10k
+################################################################################
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+################################################################################
+# Rust alternatives
+################################################################################
+alias cat="bat"
+alias ll='exa -lha --group-directories-first --icons'
+alias ls="exa"
+
+################################################################################
+# Zoxide
+################################################################################
+eval "$(zoxide init zsh)"
+
+################################################################################
+# Direnv
+################################################################################
+eval "$(direnv hook zsh)"
+

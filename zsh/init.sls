@@ -1,5 +1,6 @@
 include:
   - cli-utils
+  - nvim
 
 p10k:
   file.managed:
@@ -18,4 +19,10 @@ zprezto-update:
     - only: test -d ~/.zprezto
     - runas: jared
     - source: salt://zsh/prezto-update.zsh
+
+zprezto-config:
+  file.managed:
+    - name: /home/jared/.zshrc
+    - source: salt://zsh/zshrc
+    - user: jared
 

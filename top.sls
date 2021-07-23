@@ -1,10 +1,10 @@
 base:
   "*":
     - arch
-    # TODO: fix this 
-    # - asdf
     - git
     - kitty
+    - tmux
     - nvim
     - zsh
+    - elixir
 
