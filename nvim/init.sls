@@ -7,7 +7,10 @@ neovim-config:
     - name: /home/jared/.config/nvim
     - source: salt://nvim/nvim
     - user: jared
-    - force: true
+    - clean: true
+  cmd.run:
+    - name: nvim -c PackerSync -c "sleep 1" -c q --headless
+    - runas: jared
 
 vim-packer:
   git.cloned:
