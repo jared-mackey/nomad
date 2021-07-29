@@ -85,3 +85,11 @@ op:
       - paru -S 1password-cli --noconfirm --skipreview
     - runas: jared
     - unless: paru -Qi 1password-cli
+
+# Wallpapers
+nitrogen:
+  pkg.installed
+
+# Audio things?
+playerctl:
+  pkg.installed

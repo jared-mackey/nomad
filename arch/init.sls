@@ -1,5 +1,8 @@
 include:
   - crons
+  - awesome
+  - picom
+  - ntp
 
 reflector:
   pkg.installed:

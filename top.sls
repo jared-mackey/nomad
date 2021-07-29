@@ -7,5 +7,4 @@ base:
     - nvim
     - zsh
     - elixir
-    - ntp
 
