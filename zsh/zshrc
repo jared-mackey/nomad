@@ -31,7 +31,7 @@ alias kctx="kubectx"
 alias kns="kubens"
 alias k="kubectl"
 alias kgp="kubectl get pods"
-alias consul-forward="kubectl port-forward -n kv consul-server-0 8500:8500 &; sleep 2; open http://localhost:8500; fg"
+alias consul-forward="kubectl port-forward -n kv consul-server-0 8500:8500 &; sleep 2; xdg-open http://localhost:8500; fg"
 
 ################################################################################
 # Elixir
