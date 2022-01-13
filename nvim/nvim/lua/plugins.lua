@@ -43,7 +43,7 @@ packer.startup(function ()
   }
   use {
     'neovim/nvim-lspconfig',
-    requires = {{'kabouzeid/nvim-lspinstall'}},
+    requires = {{'williamboman/nvim-lsp-installer'}},
     config = function() require('lsp') end,
   }
   use {
@@ -79,6 +79,8 @@ packer.startup(function ()
   use 'simrat39/rust-tools.nvim'
   -- salt
   use 'saltstack/salt-vim'
+  -- markdown
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   -- ================================================================================
 
   -- THEME

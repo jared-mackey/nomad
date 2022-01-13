@@ -42,6 +42,9 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.inccommand = "nosplit"
 
+-- spelling
+opt.spell = true
+
 -- how often to poll for updates
 -- affects things like gutter symbols
 opt.updatetime = 300

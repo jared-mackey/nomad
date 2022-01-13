@@ -43,24 +43,30 @@ nvim_lsp.sqlls.setup{
 --   }
 -- }
 
--- Setup language server installer / sourcer
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{
-      -- Require lsp signature when setting up these LSP
-      on_attach = function()
-        require('lsp_signature').on_attach()
-      end
-    }
-  end
-end
+local lsp_installer = require('nvim-lsp-installer')
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
+  server:setup(opts)
+end)
 
-setup_servers()
+-- -- Setup language server installer / sourcer
+-- local function setup_servers()
+--   require'nvim-lsp-installer'.setup()
+--   local servers = require'nvim-lsp-installer.servers'.installed_servers()
+--   for _, server in pairs(servers) do
+--     require'lspconfig'[server].setup{
+--       -- Require lsp signature when setting up these LSP
+--       on_attach = function()
+--         require('lsp_signature').on_attach()
+--       end
+--     }
+--   end
+-- end
+-- 
+-- setup_servers()
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
+require'nvim-lsp-installer'.post_install_hook = function ()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
