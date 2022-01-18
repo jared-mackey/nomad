@@ -53,6 +53,7 @@ packer.startup(function ()
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -104,6 +105,8 @@ packer.startup(function ()
   use 'tpope/vim-dadbod'
   use 'kristijanhusak/vim-dadbod-ui'
   -- ================================================================================
+
+  use 'skywind3000/asyncrun.vim'
 
   -- Browser
   use {

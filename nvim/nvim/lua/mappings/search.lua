@@ -14,7 +14,9 @@ telescope.setup {
   },
 }
 
-map('n', '<leader>ff', "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '--type', 'file', '--hidden', '-g', '-E', '.git/' }})<cr>", default_opts)
-map('n', '<leader>fr', "<cmd>lua require'telescope.builtin'.buffers({ show_all_buffers = true })<cr>", default_opts)
-map('n', '<leader>fg', "<cmd>lua require'telescope.builtin'.git_status()<cr>", default_opts)
-map('n', '<leader>fb', "<cmd>lua require'telescope.builtin'.file_browser({cwd = vim.fn.expand('%:p:h')})<cr>", default_opts)
+telescope.load_extension "file_browser"
+
+map('n', '<leader>ff', ":Telescope find_files find_command=fd,--type,file,--hidden,-g,-E,.git/<cr>", default_opts)
+map('n', '<leader>fr', ":Telescope buffers<cr>", default_opts)
+map('n', '<leader>fg', ":Telescope git_status<cr>", default_opts)
+map('n', '<leader>fb', ":Telescope file_browser<cr>", default_opts)
