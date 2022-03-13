@@ -19,6 +19,7 @@ asdf-erlang-install:
   cmd.run:
     - name: source /opt/asdf-vm/asdf.sh; asdf install erlang {{ erlang_version }}
     - runas: jared
+    - unless: source /opt/asdf-vm/asdf.sh; asdf list erlang | grep {{ erlang_version }}
 
 asdf-erlang-global:
   cmd.run:
@@ -38,6 +39,7 @@ asdf-elixir-install:
   cmd.run:
     - name: source /opt/asdf-vm/asdf.sh; asdf install elixir {{ elixir_version }}
     - runas: jared
+    - unless: source /opt/asdf-vm/asdf.sh; asdf list elixir | grep {{ elixir_version }}
 
 asdf-elixir-global:
   cmd.run:

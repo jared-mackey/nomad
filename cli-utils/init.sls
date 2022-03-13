@@ -93,3 +93,10 @@ nitrogen:
 # Audio things?
 playerctl:
   pkg.installed
+
+# Other
+fswatch:
+  cmd.run:
+    - name: paru -S fswatch --skipreview --noconfirm
+    - runas: jared
+    - unless: paru -Qi fswatch

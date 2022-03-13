@@ -37,7 +37,6 @@ name = Jared Mackey
   excludesfile = /home/jared/.config/git/gitignore
   editor = nvim
 [push]
-  pushOption = merge_request.label=impact::low
   pushOption = merge_request.create
 [init]
   defaultBranch = main

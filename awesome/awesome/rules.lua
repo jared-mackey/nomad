@@ -18,7 +18,7 @@ awful.rules.rules = {
     }
   },
   { 
-    rule = { class = "Brave-browser" },
+    rule = { class = "[bB]rave-browser" },
     properties = { maximized = false, floating = false, tag = "2" }
   },
   -- Chat applications

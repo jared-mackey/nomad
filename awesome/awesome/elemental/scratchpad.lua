@@ -10,7 +10,7 @@ local terminal_scratch = bling.module.scratchpad:new {
   rule = {class = "kitty-scratch"},
   sticky = true,
   autoclose = false,
-  geometry = {x = dpi(10), y = dpi(200), height = dpi(1000), width = dpi(2150)},
+  geometry = {x = dpi(60), y = dpi(200), height = dpi(1000), width = dpi(2150)},
   floating = true,
   reapply = true,
   awestore = {
@@ -25,7 +25,7 @@ local monitor_scratch = bling.module.scratchpad:new {
   rule = {class = "kitty-monitor"},
   sticky = true,
   autoclose = false,
-  geometry = {x = dpi(10), y = dpi(200), height = dpi(1000), width = dpi(2150)},
+  geometry = {x = dpi(60), y = dpi(200), height = dpi(1000), width = dpi(2150)},
   floating = true,
   reapply = true,
   awestore = {

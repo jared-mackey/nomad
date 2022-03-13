@@ -50,8 +50,12 @@ require("rules")
 require("signals")
 require("autostart")
 -- Extras
+
 local bling = require("module.bling")
-bling.signal.playerctl.enable()
+
+bling.signal.playerctl.lib {
+  player = {'spotify', 'spotifyd'}
+}
 
 user = {
   terminal = "kitty"

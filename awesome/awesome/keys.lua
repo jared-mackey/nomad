@@ -261,7 +261,7 @@ local clientkeys = gears.table.join(
         end,
         {description = "move to master", group = "client"}
     ),
-    awful.key({ superkey,           }, "o",      function (c) c:move_to_screen()               end,
+    awful.key({ superkey,           }, "j",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ superkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
