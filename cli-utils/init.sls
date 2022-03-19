@@ -29,6 +29,19 @@ zoxide:
     - require:
       - rust
 
+zellij:
+  cmd.run:
+    - name: cargo install zellij
+    - unless: which zellij
+    - runas: jared
+    - require:
+      - rust
+  
+  file.managed:
+    - name: /home/jared/.config/zellij/config.yaml
+    - source: salt://cli-utils/zellij.yaml
+    - makedirs: True
+
 xsv:
   cmd.run:
     - name: cargo install xsv
@@ -37,13 +50,24 @@ xsv:
     - require:
       - rust
 
-btm:
+tokei:
   cmd.run:
-    - name: cargo install bottom
-    - unless: which btm
+    - name: cargo install tokei
+    - unless: which tokei
     - runas: jared
     - require:
       - rust
+
+btop:
+  cmd.run:
+    - name: paru -S btop --skipreview --noconfirm
+    - runas: jared
+    - unless: paru -Qi btop
+
+  file.managed:
+    - name: /home/jared/.config/btop/themes/embark.theme
+    - source: salt://cli-utils/btop-embark.theme
+    - makedirs: true
 
 bat:
   cmd.run:
