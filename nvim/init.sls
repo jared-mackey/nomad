@@ -9,7 +9,7 @@ neovim-config:
     - user: jared
     - clean: true
   cmd.run:
-    - name: nvim -c PackerSync -c "sleep 1" -c q --headless
+    - name: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     - runas: jared
 
 vim-packer:
