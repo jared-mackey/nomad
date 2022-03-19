@@ -4,16 +4,16 @@ neovim:
 
 neovim-config:
   file.recurse:
-    - name: /home/jared/.config/nvim
+    - name: /home/{{ grains['user'] }}/.config/nvim
     - source: salt://nvim/nvim
-    - user: jared
+    - user: {{ grains['user'] }}
     - clean: true
   cmd.run:
     - name: nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-    - runas: jared
+    - runas: {{ grains['user'] }}
 
 vim-packer:
   git.cloned:
     - name: https://github.com/wbthomason/packer.nvim
-    - target: /home/jared/.local/share/nvim/site/pack/packager/opt/packer.nvim
-    - user: jared
+    - target: /home/{{ grains['user'] }}/.local/share/nvim/site/pack/packager/opt/packer.nvim
+    - user: {{ grains['user'] }}

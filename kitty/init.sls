@@ -3,6 +3,6 @@ kitty:
 
 kitty-config:
   file.recurse:
-    - name: /home/jared/.config/kitty
+    - name: /home/{{ grains['user'] }}/.config/kitty
     - source: salt://kitty/kitty
-    - user: jared
+    - user: {{ grains['user'] }}

@@ -10,4 +10,8 @@ providers:
   user: useradd
   group: groupadd
 
-    
+log_level: info
+
+grains:
+  user: jared
+

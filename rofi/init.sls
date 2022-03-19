@@ -3,15 +3,15 @@ rofi:
 
 rofi-config:
   file.recurse:
-    - name: /home/jared/.config/rofi
+    - name: /home/{{ grains['user'] }}/.config/rofi
     - source: salt://rofi/rofi
-    - user: jared
+    - user: {{ grains['user'] }}
     - force: True
 
 rofi-emoji:
   cmd.run:
     - name: paru -S rofi-emoji --noconfirm --skipreview
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - unless: paru -Qi rofi-emoji
 
 rofi-calc:

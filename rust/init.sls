@@ -4,5 +4,5 @@ rust:
 
 rustconfig:
   file.managed:
-    - name: /home/jared/.cargo/config.toml
+    - name: /home/{{ grains['user'] }}/.cargo/config.toml
     - source: salt://rust/config.toml

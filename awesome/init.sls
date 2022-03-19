@@ -12,20 +12,20 @@ awestore:
 
 awesome-configs:
   file.recurse:
-    - name: /home/jared/.config/awesome
+    - name: /home/{{ grains['user'] }}/.config/awesome
     - source: salt://awesome/awesome
-    - user: jared
+    - user: {{ grains['user'] }}
     - makedirs: True
     - force: True
 
 awesome-bling:
   git.latest:
     - name: https://github.com/BlingCorp/bling
-    - target: /home/jared/.config/awesome/module/bling
-    - user: jared
+    - target: /home/{{ grains['user'] }}/.config/awesome/module/bling
+    - user: {{ grains['user'] }}
 
 awesome-layout-machi:
   git.latest:
     - name: https://github.com/xinhaoyuan/layout-machi
-    - target: /home/jared/.config/awesome/module/layout-machi
-    - user: jared
+    - target: /home/{{ grains['user'] }}/.config/awesome/module/layout-machi
+    - user: {{ grains['user'] }}

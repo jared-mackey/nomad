@@ -1,12 +1,12 @@
 gitconfig:
   file.managed:
-    - name: /home/jared/.config/git/config
+    - name: /home/{{ grains['user'] }}/.config/git/config
     - source: salt://git/gitconfig
-    - user: jared
+    - user: {{ grains['user'] }}
     - makedirs: true
 
 gitignore:
   file.managed:
-    - name: /home/jared/.config/git/gitignore
+    - name: /home/{{ grains['user'] }}/.config/git/gitignore
     - source: salt://git/gitignore
-    - user: jared
+    - user: {{ grains['user'] }}

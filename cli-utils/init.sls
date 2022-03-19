@@ -9,7 +9,7 @@ ripgrep:
   cmd.run:
     - name: cargo install ripgrep
     - unless: which rg
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
         - rust
 
@@ -17,7 +17,7 @@ exa:
   cmd.run:
     - name: cargo install exa
     - unless: which exa
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
@@ -25,7 +25,7 @@ zoxide:
   cmd.run:
     - name: cargo install zoxide
     - unless: which zoxide
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
@@ -33,12 +33,12 @@ zellij:
   cmd.run:
     - name: cargo install zellij
     - unless: which zellij
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
   
   file.managed:
-    - name: /home/jared/.config/zellij/config.yaml
+    - name: /home/{{ grains['user'] }}/.config/zellij/config.yaml
     - source: salt://cli-utils/zellij.yaml
     - makedirs: True
 
@@ -46,7 +46,7 @@ xsv:
   cmd.run:
     - name: cargo install xsv
     - unless: which xsv
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
@@ -54,18 +54,18 @@ tokei:
   cmd.run:
     - name: cargo install tokei
     - unless: which tokei
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
 btop:
   cmd.run:
     - name: paru -S btop --skipreview --noconfirm
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - unless: paru -Qi btop
 
   file.managed:
-    - name: /home/jared/.config/btop/themes/embark.theme
+    - name: /home/{{ grains['user'] }}/.config/btop/themes/embark.theme
     - source: salt://cli-utils/btop-embark.theme
     - makedirs: true
 
@@ -73,7 +73,7 @@ bat:
   cmd.run:
     - name: cargo install bat
     - unless: which bat
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
@@ -81,7 +81,7 @@ fd:
   cmd.run:
     - name: cargo install fd-find
     - unless: which fd
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - require:
       - rust
 
@@ -93,7 +93,7 @@ jq:
 direnv:
   cmd.run:
     - name: paru -S direnv --skipreview --noconfirm
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - unless: paru -Qi direnv
 
 # Kubens/Kubectx
@@ -107,7 +107,7 @@ op:
   cmd.run:
     - names:
       - paru -S 1password-cli --noconfirm --skipreview
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - unless: paru -Qi 1password-cli
 
 # Wallpapers
@@ -122,5 +122,5 @@ playerctl:
 fswatch:
   cmd.run:
     - name: paru -S fswatch --skipreview --noconfirm
-    - runas: jared
+    - runas: {{ grains['user'] }}
     - unless: paru -Qi fswatch
