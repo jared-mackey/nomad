@@ -6,9 +6,11 @@ include:
 awesome:
   pkg.installed
 
-awestore:
-  cmd.run:
-   - name: luarocks --lua-version 5.3 install awestore
+rubato:
+  git.latest:
+    - name: https://github.com/andOrlando/rubato.git
+    - target: /home/{{ grains['user'] }}/.config/awesome/module/rubato
+    - user: {{ grains['user'] }}
 
 awesome-configs:
   file.recurse:
