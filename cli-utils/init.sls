@@ -13,6 +13,14 @@ ripgrep:
     - require:
         - rust
 
+watchexec:
+  cmd.run:
+    - name: cargo install watchexec-cli
+    - unless: which watchexec
+    - runas: {{ grains['user'] }}
+    - require:
+      - rust
+
 exa:
   cmd.run:
     - name: cargo install exa
