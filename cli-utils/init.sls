@@ -1,14 +1,15 @@
 include:
   - rust
 
+{% set cargo_path = '/home/' + grains['user'] + '/.cargo/bin' %}
+
 flameshot:
   pkg.installed
 
-# Cargo installed
 ripgrep:
   cmd.run:
     - name: cargo install ripgrep
-    - unless: which rg
+    - unless: test -f {{ cargo_path }}/rg
     - runas: {{ grains['user'] }}
     - require:
         - rust
@@ -16,7 +17,15 @@ ripgrep:
 watchexec:
   cmd.run:
     - name: cargo install watchexec-cli
-    - unless: which watchexec
+    - unless: test -f {{ cargo_path }}/watchexec
+    - runas: {{ grains['user'] }}
+    - require:
+      - rust
+
+sk:
+  cmd.run:
+    - name: cargo install skim
+    - unless: test -f {{ cargo_path }}/sk
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -24,7 +33,7 @@ watchexec:
 exa:
   cmd.run:
     - name: cargo install exa
-    - unless: which exa
+    - unless: test -f {{ cargo_path }}/exa
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -32,28 +41,15 @@ exa:
 zoxide:
   cmd.run:
     - name: cargo install zoxide
-    - unless: which zoxide
+    - unless: test -f {{ cargo_path }}/zoxide
     - runas: {{ grains['user'] }}
     - require:
       - rust
-
-zellij:
-  cmd.run:
-    - name: cargo install zellij
-    - unless: which zellij
-    - runas: {{ grains['user'] }}
-    - require:
-      - rust
-  
-  file.managed:
-    - name: /home/{{ grains['user'] }}/.config/zellij/config.yaml
-    - source: salt://cli-utils/zellij.yaml
-    - makedirs: True
 
 xsv:
   cmd.run:
     - name: cargo install xsv
-    - unless: which xsv
+    - unless: test -f {{ cargo_path }}/xsv
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -61,7 +57,7 @@ xsv:
 tokei:
   cmd.run:
     - name: cargo install tokei
-    - unless: which tokei
+    - unless: test -f {{ cargo_path }}/tokei
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -80,7 +76,7 @@ btop:
 bat:
   cmd.run:
     - name: cargo install bat
-    - unless: which bat
+    - unless: test -f {{ cargo_path }}/bat
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -88,7 +84,7 @@ bat:
 fd:
   cmd.run:
     - name: cargo install fd-find
-    - unless: which fd
+    - unless: test -f {{ cargo_path }}/fd
     - runas: {{ grains['user'] }}
     - require:
       - rust
@@ -132,3 +128,4 @@ fswatch:
     - name: paru -S fswatch --skipreview --noconfirm
     - runas: {{ grains['user'] }}
     - unless: paru -Qi fswatch
+

@@ -1,0 +1,13 @@
+name: Picard
+root: ~/dev/swyf/picard
+
+windows:
+  - " ": nvim
+  - " ":
+      layout: main-vertical
+      panes:
+        - iex -S mix
+        - docker-compose up $(docker compose config --services | rg -v -e app -e e2e)
+        - 
+  - " ": nvim +DBUI
+

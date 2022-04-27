@@ -1,5 +1,5 @@
 include:
-  - lua
+  - lang.lua
   - rofi
   - cli-utils
 

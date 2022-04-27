@@ -1,11 +1,15 @@
 base:
   "*":
+    - paru
     - arch
     - git
     - kitty
     - tmux
     - nvim
-    - zsh
-    - elixir
-    - node
+    - fish
+    - lang.elixir
+    - lang.go
+    - lang.node
+    - lang.lua
+    - lang.ruby
 

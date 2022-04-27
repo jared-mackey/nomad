@@ -1,8 +1,14 @@
+# vim: set ft=yaml:
+
 file_roots:
   base:
     - /home/jared/nomad
 
 file_client: local
+
+pillar_roots:
+  base:
+    - /home/jared/nomad/pillar
 
 providers:
   service: systemd

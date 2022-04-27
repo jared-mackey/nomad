@@ -2,7 +2,8 @@ local awful = require("awful")
 local gears = require("gears")
 local bling = require("module.bling")
 local hotkeys_popup = require("awful.hotkeys_popup")
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
+local scratchpad = require('elemental.scratchpad')
 
 local superkey = "Mod4"
 local altkey = "Mod1"
@@ -167,13 +168,13 @@ local globalkeys = gears.table.join(
     -- Scratchpads
     awful.key({ superkey, "Shift" }, "t",
       function ()
-        awesome.emit_signal("scratch::terminal")
+        scratchpad.terminal:toggle()
       end,
       {description = "launch terminal scratchpad", group = "scratchpads"}
     ),
     awful.key({ superkey }, ";",
       function ()
-        awesome.emit_signal("scratch::monitor")
+        scratchpad.monitor:toggle()
       end,
       {description = "launch monitor scratchpad", group = "scratchpads"}
     ),

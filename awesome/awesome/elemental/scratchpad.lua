@@ -20,11 +20,11 @@ end
 
 local terminal_scratch = function(screen_geometry)
   -- clamp the width and height to always fit on screen
-  local width = math.min(screen_geometry.width * 0.90, 2400)
+  local width = math.min(screen_geometry.width * 0.90, 2600)
   local height = math.min(1000, screen_geometry.height - 20)
   local x = (screen_geometry.width - width) / 2
  
-  local terminal = bling.module.scratchpad:new {
+  return bling.module.scratchpad:new {
     command = "kitty --class kitty-scratch",
     rule = {class = "kitty-scratch"},
     sticky = true,
@@ -38,26 +38,21 @@ local terminal_scratch = function(screen_geometry)
       }
     }
   }
-  
-  awesome.connect_signal("scratch::terminal", function() terminal:toggle() end)
-
-  return terminal
 end
 
 
 local monitor_scratch = function(screen_geometry)
   -- clamp the width and height to always fit on screen
-  local width = math.min(screen_geometry.width * 0.90, 2400)
-  local height = math.min(600, screen_geometry.height - 20)
+  local width = math.min(screen_geometry.width * 0.90, 2600)
+  local height = math.min(1600, screen_geometry.height - 20)
   local x = (screen_geometry.width - width) / 2
 
-  local monitor = bling.module.scratchpad:new {
-
+  return bling.module.scratchpad:new {
     command = "kitty --class kitty-monitor btop",
     rule = {class = "kitty-monitor"},
     sticky = true,
     autoclose = true,
-    geometry = {x = dpi(60), y = dpi(200), height = dpi(1000), width = dpi(2150)},
+    geometry = {x = x, y = dpi(200), height = height, width = width},
     floating = true,
     reapply = true,
     rubato = {
@@ -66,21 +61,17 @@ local monitor_scratch = function(screen_geometry)
       }
     }
   }
-
-  awesome.connect_signal("scratch::monitor", function() monitor:toggle() end)
-
-  return monitor
 end
 
 -- initialize scratchpads
 _M.init = function()
     local scratchpads = {
-      terminal_scratch,
-      monitor_scratch
+      terminal = terminal_scratch,
+      monitor = monitor_scratch
     }
 
-    for _idx, scratch in pairs(scratchpads) do
-      scratch(screen.primary.geometry)
+    for name, scratch in pairs(scratchpads) do
+      _M[name] = scratch(screen.primary.geometry)
     end
 end
 
