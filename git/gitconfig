@@ -5,6 +5,7 @@ name = Jared Mackey
 
 [alias]
   homeprofile = !git config user.email \"jared@mackey.tech\"  && git config user.signingkey 0C5ED94391419E3E
+  workprofile = !git config user.email \"jared@swyf.app\" && git config user.signingkey 30EDC3E732AAEE58 && git config core.sshCommand \"ssh -i ~/.ssh/id_swyf -F /dev/null\"
   cleanup = !"git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
   up = pull
   undo = reset HEAD~1 --mixed
