@@ -1,8 +1,8 @@
 vim.cmd [[packadd packer.nvim]]
 local packer = require('packer')
 
-packer.startup(function ()
-  use {'wbthomason/packer.nvim', opt = true}
+packer.startup(function()
+  use { 'wbthomason/packer.nvim', opt = true }
   -- ================================================================================
   -- CORE
   use 'tpope/vim-fugitive'
@@ -16,7 +16,7 @@ packer.startup(function ()
   use {
     'hrsh7th/nvim-compe',
     config = function()
-      require'compe'.setup {        
+      require 'compe'.setup {
         enabled = true,
         autocomplete = true,
         debug = false,
@@ -43,7 +43,7 @@ packer.startup(function ()
   }
   use {
     'neovim/nvim-lspconfig',
-    requires = {{'williamboman/nvim-lsp-installer'}},
+    requires = { { 'williamboman/nvim-lsp-installer' } },
     config = function() require('lsp') end,
   }
   use {
@@ -51,7 +51,7 @@ packer.startup(function ()
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } }
   }
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use {
@@ -65,11 +65,24 @@ packer.startup(function ()
     'glepnir/galaxyline.nvim',
     branch = 'main',
     config = function() require('status-line') end,
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
+  }
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+      "nvim-telescope/telescope-dap.nvim",
+      "simrat39/rust-tools.nvim",
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      require("debugger").setup()
+    end
   }
   -- ================================================================================
 
@@ -81,7 +94,8 @@ packer.startup(function ()
   -- salt
   use 'saltstack/salt-vim'
   -- markdown
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   -- ================================================================================
 
   -- THEME
@@ -96,7 +110,7 @@ packer.startup(function ()
     as = 'embark',
     config = function()
       vim.g.embark_terminal_italics = false
-      vim.cmd[[colorscheme embark]]
+      vim.cmd [[colorscheme embark]]
     end
   }
   -- ================================================================================

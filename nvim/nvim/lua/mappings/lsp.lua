@@ -10,7 +10,7 @@ map('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting_sync(nil, 2000)<CR>', de
 
 map("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
 map("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", {silent = true, noremap = true})
-map("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", {silent = true, noremap = true})
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", {silent = true, noremap = true})
 map("n", "<leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
 map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
