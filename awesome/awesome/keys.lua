@@ -115,12 +115,12 @@ local globalkeys = gears.table.join(
       {description = "go back", group = "client"}
     ),
     -- Standard program
-    awful.key({ altkey }, "Return",
-      function ()
-        awful.spawn(user.terminal)
-      end,
-      {description = "open a terminal", group = "launcher"}
-    ),
+    -- awful.key({ altkey }, "Return",
+    --   function ()
+    --     awful.spawn(user.terminal)
+    --   end,
+    --   {description = "open a terminal", group = "launcher"}
+    -- ),
     -- Standard program
     awful.key({ altkey }, "#60",
       function ()
