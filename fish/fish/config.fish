@@ -36,6 +36,11 @@ alias credo="mix credo --strict"
 
 set -xg ELIXIR_LS_DIR $XDG_CODE_HOME/elixir-ls
 
+################################################################################
+# Android
+################################################################################
+set -xg ANDROID_HOME $HOME/Android/Sdk
+fish_add_path -a -g $ANDROID_HOME/platform-tools/
 
 ################################################################################
 # NOMAD
