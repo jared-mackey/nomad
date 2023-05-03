@@ -13,6 +13,25 @@ packer.startup(function()
     'janko/vim-test',
     requires = { 'tpope/vim-dispatch', 'neomake/neomake' }
   }
+
+  use {
+    "williamboman/mason.nvim",
+    requires = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig"
+    },
+    config = function() require('lsp') end,
+  }
+  use {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      require('lsp_signature').setup({
+        handler_opts = {
+          border = "rounded"
+        }
+      })
+    end,
+  }
   use {
     'hrsh7th/nvim-compe',
     config = function()
@@ -41,14 +60,7 @@ packer.startup(function()
       }
     end
   }
-  use {
-    'neovim/nvim-lspconfig',
-    requires = { { 'williamboman/nvim-lsp-installer' } },
-    config = function() require('lsp') end,
-  }
-  use {
-    'ray-x/lsp_signature.nvim'
-  }
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } }
@@ -71,6 +83,11 @@ packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
   use {
     'mfussenegger/nvim-dap',
     requires = {
@@ -84,18 +101,35 @@ packer.startup(function()
       require("debugger").setup()
     end
   }
+
+  use {
+    "github/copilot.vim"
+  }
   -- ================================================================================
 
   -- LANGUAGE SUPPORT
   -- elixir
-  use 'elixir-editors/vim-elixir'
+  use {
+    "elixir-tools/elixir-tools.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("elixir").setup({
+        elixirls = {enable=false},
+        credo = {enable=true}
+      })
+    end
+  }
   -- rust
   use 'simrat39/rust-tools.nvim'
   -- salt
   use 'saltstack/salt-vim'
   -- markdown
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  })
   -- ================================================================================
 
   -- THEME
@@ -107,12 +141,20 @@ packer.startup(function()
   --}
   use {
     'embark-theme/vim',
+    branch = 'treesitter-and-colorV2-new-red',
     as = 'embark',
     config = function()
       vim.g.embark_terminal_italics = false
-      vim.cmd [[colorscheme embark]]
+      -- vim.cmd [[colorscheme embark]]
     end
   }
+  use {
+    'andersevenrud/nordic.nvim',
+    config = function()
+      vim.cmd [[colorscheme nordic]]
+    end
+  }
+
   -- ================================================================================
 
   -- DATABASE
