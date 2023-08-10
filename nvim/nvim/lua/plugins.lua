@@ -115,6 +115,7 @@ packer.startup(function()
     config = function()
       require("elixir").setup({
         elixirls = {enable=false},
+        nextls = {enable=false},
         credo = {enable=true}
       })
     end

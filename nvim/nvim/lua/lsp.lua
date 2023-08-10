@@ -1,8 +1,9 @@
 require("mason").setup()
+
 require('mason-lspconfig').setup {
   ensure_installed = {
     "lua_ls", "elixirls", "tsserver", "bashls", "jsonls", "yamlls", "html", "cssls", "dockerls",
-    "terraformls", "cmake", "gopls", "rust_analyzer", "sqlls", "vimls"
+    "terraformls", "cmake", "gopls", "rust_analyzer", "sqlls", "vimls", "pylsp",
   }
 }
 

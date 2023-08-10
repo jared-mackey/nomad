@@ -41,3 +41,5 @@ name = Jared Mackey
   pushOption = merge_request.create
 [init]
   defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
