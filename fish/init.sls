@@ -6,9 +6,9 @@ fish:
 
 starship:
   cmd.run:
-    - name: paru -S starship --skipreview --noconfirm
+    - name: cargo install starship --locked
     - runas: {{ grains['user'] }}
-    - unless: paru -Qi starship
+    - unless: which starship
 
 starship-config:
   file.managed:
