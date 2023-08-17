@@ -5,7 +5,7 @@ set -eu
 RALLY=rally
 VERSION=0.0.1
 
-TARGET=$(ls -d ~/dev/private/* ~/dev/s*/* ~/dev/d*-*/* ~/nomad | sk)
+TARGET=$(ls -d ~/dev/private/* ~/dev/s*/* ~/dev/d*-*/* ~/dev/y*/* ~/nomad | sk)
 NAME=$(basename $TARGET)
 
 tmuxinator start $NAME || tmuxinator start default name=$NAME root=$TARGET
