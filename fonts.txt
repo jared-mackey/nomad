@@ -1,0 +1,5 @@
+Fonts needed
+
+RobotoMono Nerd Font
+FiraCode Nerd Font Mono
+FiraCode Nerd Font
