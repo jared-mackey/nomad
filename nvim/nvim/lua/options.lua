@@ -61,3 +61,15 @@ vim.g.gruvbox_invert_selection = 0
 -- BACKUP/SWAP
 opt.backup = false
 opt.writebackup = false
+
+-- Diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    -- source = "always",  -- Or "if_many"
+    prefix = '●', -- Could be '■', '▎', 'x'
+  },
+  severity_sort = true,
+  float = {
+    source = "always",  -- Or "if_many"
+  },
+})

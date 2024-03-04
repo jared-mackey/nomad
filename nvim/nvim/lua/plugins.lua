@@ -114,9 +114,9 @@ packer.startup(function()
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require("elixir").setup({
-        elixirls = {enable=false},
-        nextls = {enable=false},
-        credo = {enable=true}
+        elixirls = { enable = false },
+        nextls = { enable = false },
+        credo = { enable = true }
       })
     end
   }
@@ -124,6 +124,8 @@ packer.startup(function()
   use 'simrat39/rust-tools.nvim'
   -- salt
   use 'saltstack/salt-vim'
+  -- go
+  use 'fatih/vim-go'
   -- markdown
   use({
     "iamcco/markdown-preview.nvim",
@@ -131,29 +133,33 @@ packer.startup(function()
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   })
+  -- helm
+  use 'towolf/vim-helm'
+
   -- ================================================================================
 
   -- THEME
   use 'ryanoasis/vim-devicons'
-  --use {
-  --  '~/dev/private/gruvbox.nvim',
-  --  requires = {'rktjmp/lush.nvim'},
-  -- config = 'vim.cmd[[colorscheme gruvbox]]'
-  --}
+  use {
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      vim.cmd [[colorscheme gruvbox]]
+    end
+  }
   use {
     'embark-theme/vim',
     branch = 'treesitter-and-colorV2-new-red',
     as = 'embark',
-    config = function()
-      vim.g.embark_terminal_italics = false
-      -- vim.cmd [[colorscheme embark]]
-    end
+    --config = function()
+    --  vim.g.embark_terminal_italics = false
+    --  vim.cmd [[colorscheme embark]]
+    --end
   }
   use {
     'andersevenrud/nordic.nvim',
-    config = function()
-      vim.cmd [[colorscheme nordic]]
-    end
+    -- config = function()
+    --   vim.cmd [[colorscheme nordic]]
+    -- end
   }
 
   -- ================================================================================

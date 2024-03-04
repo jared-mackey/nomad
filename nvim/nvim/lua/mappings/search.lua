@@ -18,5 +18,8 @@ telescope.load_extension "file_browser"
 
 map('n', '<leader>ff', ":Telescope find_files path=cwd find_command=fd,--type,file,--hidden,-g,-E,.git/<cr>", default_opts)
 map('n', '<leader>fk', ":Telescope buffers<cr>", default_opts)
-map('n', '<leader>fg', ":Telescope git_status<cr>", default_opts)
-map('n', '<leader>fb', ":Telescope file_browser path=%:p:h<cr>", default_opts)
+-- map('n', '<leader>fg', ":Telescope git_status<cr>", default_opts)
+map('n', '<leader>fb', ":Telescope file_browser path=%:p:h hidden=true<cr>", default_opts)
+map('n', '<leader>fg', ":Telescope live_grep<cr>", default_opts)
+map('n', '<leader>fr', ":Telescope lsp_references<cr>", default_opts)
+map('n', '<leader>fi', ":Telescope lsp_implementations<cr>", default_opts)

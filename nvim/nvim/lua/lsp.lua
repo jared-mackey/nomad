@@ -69,8 +69,26 @@ require("mason-lspconfig").setup_handlers {
         enableExperimental = true,
       },
     }
-
     require("rust-tools").setup {}
+  end,
+  ["gopls"] = function()
+    nvim_lsp.gopls.setup {
+      settings = {
+        gopls = {
+          analyses = {
+            nilness = true,
+            unusedparams = true,
+            unusedwrite = true,
+            useany = true,
+          },
+          codelenses = {
+            tidy = false,
+          },
+          staticcheck = true,
+          gofumpt = true,
+        }
+      }
+    }
   end
 }
 
@@ -119,4 +137,3 @@ require 'nvim-treesitter.configs'.setup {
     },
   }
 }
-
