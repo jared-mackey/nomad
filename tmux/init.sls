@@ -21,6 +21,13 @@ embark-tmux:
     - user: {{ grains['user'] }}
     - makedirs: True
 
+gruvbox-tmux:
+  file.managed:
+    - name: {{ tmux_dir }}/gruvbox.tmux
+    - source: salt://tmux/gruvbox.tmux
+    - user: {{ grains['user'] }}
+    - makedirs: True
+
 tmux-plugin-manager:
   git.cloned:
     - name: https://github.com/tmux-plugins/tpm

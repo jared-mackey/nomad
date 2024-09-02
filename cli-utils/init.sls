@@ -63,11 +63,9 @@ tokei:
       - rust
 
 btop:
-  cmd.run:
-    - name: paru -S btop --skipreview --noconfirm
-    - runas: {{ grains['user'] }}
-    - unless: paru -Qi btop
+  pkg.installed
 
+btop-files:
   file.managed:
     - name: /home/{{ grains['user'] }}/.config/btop/themes/embark.theme
     - source: salt://cli-utils/btop-embark.theme
@@ -95,10 +93,11 @@ jq:
 
 # Automatic env management
 direnv:
-  cmd.run:
-    - name: paru -S direnv --skipreview --noconfirm
-    - runas: {{ grains['user'] }}
-    - unless: paru -Qi direnv
+  pkg.installed
+  # cmd.run:
+  #   - name: paru -S direnv --skipreview --noconfirm
+  #   - runas: {{ grains['user'] }}
+  #   - unless: paru -Qi direnv
 
 # Kubens/Kubectx
 kubectx:
@@ -115,17 +114,17 @@ op:
     - unless: paru -Qi 1password-cli
 
 # Wallpapers
-nitrogen:
-  pkg.installed
+# nitrogen:
+#   pkg.installed
 
 # Audio things?
-playerctl:
-  pkg.installed
+# playerctl:
+#   pkg.installed
 
 # Other
-fswatch:
-  cmd.run:
-    - name: paru -S fswatch --skipreview --noconfirm
-    - runas: {{ grains['user'] }}
-    - unless: paru -Qi fswatch
+# fswatch:
+#   cmd.run:
+#     - name: paru -S fswatch --skipreview --noconfirm
+#     - runas: {{ grains['user'] }}
+#     - unless: paru -Qi fswatch
 
