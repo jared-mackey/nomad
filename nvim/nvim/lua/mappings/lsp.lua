@@ -1,6 +1,5 @@
 local map = vim.api.nvim_set_keymap
 
-map('i', '<C-y>', "compe#confirm('<CR>')", {noremap = true, silent = true, expr = true})
 map('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
 map('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
 map('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})

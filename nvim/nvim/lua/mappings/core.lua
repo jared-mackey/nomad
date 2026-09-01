@@ -14,3 +14,5 @@ map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {noremap = true, e
 
 -- Yank (copy) entire file to clipboard
 map('n', '<Leader>yy', ':%y<CR>', {noremap = true})
+
+

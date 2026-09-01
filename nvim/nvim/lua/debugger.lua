@@ -98,7 +98,7 @@ end
 function M.setup()
   configure() -- Configuration
   configure_exts() -- Extensions
-  setup_rust()
+  --setup_rust()
 end
 
 return M

@@ -2,13 +2,11 @@ require("mason").setup()
 
 require('mason-lspconfig').setup {
   ensure_installed = {
-    "lua_ls", "elixirls", "tsserver", "bashls", "jsonls", "yamlls", "html", "cssls", "dockerls",
+    "lua_ls", "elixirls", "ts_ls", "bashls", "jsonls", "yamlls", "html", "cssls", "dockerls",
     "terraformls", "cmake", "gopls", "rust_analyzer", "sqlls", "vimls", "pylsp",
   }
 }
-
-local nvim_lsp = require 'lspconfig'
-local configs = require 'lspconfig/configs'
+-- local util = require 'lspconfig/util'
 local protocol = require 'vim.lsp.protocol'
 
 -- LSP SERVER CONFIGURATION
@@ -16,17 +14,16 @@ local protocol = require 'vim.lsp.protocol'
 local capabilities = protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("mason-lspconfig").setup_handlers {
+local install_config = function()
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
-  end,
+
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
-  ["elixirls"] = function()
-    nvim_lsp.elixirls.setup {
+  -- local mason = require("mason")
+
+  vim.lsp.config("elixirls", {
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         require('elixir.elixirls').on_attach(client, bufnr)
@@ -40,17 +37,15 @@ require("mason-lspconfig").setup_handlers {
           dialyzerEnabled = true,
         }
       }
-    }
-  end,
-  ["sqlls"] = function()
-    nvim_lsp.sqlls.setup {
+    })
+
+  vim.lsp.config("sqlls", {
       cmd = {
         "sql-language-server", "up", "--method", "stdio"
       }
-    }
-  end,
-  ["rust_analyzer"] = function()
-    nvim_lsp.rust_analyzer.setup {
+    })
+
+  vim.lsp.config("rust_analyzer", {
       check = {
         command = "clippy",
       },
@@ -68,11 +63,17 @@ require("mason-lspconfig").setup_handlers {
         disabled = { "unresolved-proc-macro" },
         enableExperimental = true,
       },
-    }
-    require("rust-tools").setup {}
-  end,
-  ["gopls"] = function()
-    nvim_lsp.gopls.setup {
+    })
+
+  --require("rust-tools").setup {}
+
+  vim.lsp.config("gopls", {
+      -- cmd = { 'gopls', 'serve', '--debug=localhost:6060' },
+      --root_dir = util.root_pattern {
+      --  '.git',
+      --  'go.mod',
+      --  'go.work'
+      --},
       settings = {
         gopls = {
           analyses = {
@@ -88,14 +89,25 @@ require("mason-lspconfig").setup_handlers {
           gofumpt = true,
         }
       }
-    }
-  end
-}
+    })
+
+    vim.lsp.config("lus_ls", {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim", "use" }
+          }
+        }
+      }
+    })
+end
+
+install_config()
 
 -- Setup treesitter
 require 'nvim-treesitter.configs'.setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = {},      -- List of parsers to ignore installing
+  ignore_install = {"ipkg"},      -- List of parsers to ignore installing
   highlight = {
     enable = true,          -- false will disable the whole extension
     disable = {},           -- list of language that will be disabled

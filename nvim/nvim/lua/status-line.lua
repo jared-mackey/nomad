@@ -33,7 +33,7 @@ local file_name = function()
 end
 
 local active_lsp = function()
-  active_client = vim.lsp.buf_get_clients()[1]
+  active_client = vim.lsp.get_clients()[1]
   if active_client ~= nil then
     vim.api.nvim_command('hi GalaxyLanguageServer guifg=' ..colors.green)
   else

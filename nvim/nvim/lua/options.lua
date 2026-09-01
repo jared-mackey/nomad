@@ -1,3 +1,4 @@
+local vim = vim
 local opt = vim.opt
 
 -- Spacing
@@ -73,3 +74,17 @@ vim.diagnostic.config({
     source = "always",  -- Or "if_many"
   },
 })
+
+-- Auto balance splits
+vim.api.nvim_create_autocmd({'WinResized'}, {
+    pattern = '*',
+    command = 'wincmd ='
+})
+
+-- Folding
+-- Use treesitter for folding and default all folds open
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevelstart = 99
+opt.foldlevel = 99
+opt.foldnestmax = 10
