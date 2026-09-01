@@ -1,3 +1,5 @@
+#vim: ft=gitconfig
+
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
@@ -14,6 +16,8 @@ name = Jared Mackey
   ignored = !git ls-files -v | grep "^[[:lower:]]"
   yeet = push --force-with-lease
   anew = push -u origin HEAD
+  ugh = !SKIP=prepare-commit-msg git commit --amend --no-edit
+  nemo = !git branch --sort=-committerdate --format='%(committerdate:relative) %(refname:short)' | head -n 8
 
 [commit]
   gpgsign = true
@@ -38,7 +42,8 @@ name = Jared Mackey
   excludesfile = /home/jared/.config/git/gitignore
   editor = nvim
 [push]
-  pushOption = merge_request.create
+  autoSetupRemote = true
+  # pushOption = merge_request.create
 [init]
   defaultBranch = main
 [url "git@github.com:"]
